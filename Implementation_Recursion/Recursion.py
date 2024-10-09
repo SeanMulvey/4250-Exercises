@@ -25,10 +25,12 @@
     # 2. Validate input from user, if invalid reprompt
     # 3. Sum input to get total
     # 4. Pass total through recursive method
-    # 5. Check if integer % 10 = integer, if so exit since it is reduced to one digit
+    # 5. Check if integer is negative
+    # 6. If positive, check if integer % 10 = integer, if so exit since it is reduced to one digit
+    # 7. If negative, check if absolute value of integer % 10 = absolute value of integer, if so exit since its reduced to one digit (aside from negative sign)
     # 6. Get LSD by using % 10
     # 7. Remove LSD from integer
-    # 8. Add LSD to integer
+    # 8. If integer is positive add LSD to integer, else subtract
     # 9. Return recursive method with new integer
     # 10. ???
     # 11. Get an A in this class
@@ -65,18 +67,27 @@ def GetInput():
 # This is the recursive method that adds the LSD to the integer until there is a single digit remaining
 def ReduceInt(num):
     print(num)
-    # Exit condition of the number being only one digit
-    if num == num % 10:
+    # Need to check if num is negative because the result will always be atleast 2 digits (negative sign)
+    if num >= 0:
+        # Exit condition of the number being only one digit
+        if num == num % 10:
+            return
+    # Check to see if the absolute value is one digit
+    elif abs(num) == abs(num) % 10:
         return
-    
+
+        
     print("=>")
     # Get Least Significant Digit
     lsd = num % 10
     print(f"{num // 10} + {lsd}")
     # Remove Least Significant Digit
     num = num // 10
-    # Add LSD to new num
-    num += lsd
+    if num < 0:
+        num -= lsd
+    else:
+        # Add LSD to new num
+        num += lsd
     
 
     # Iterate
