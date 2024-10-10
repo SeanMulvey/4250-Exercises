@@ -76,7 +76,7 @@
 def Main():
     # Creates a copy of the ASCII hash map
     choice = input("Read from user input (u) or from a file (f)?: ")
-
+    reader = ""
     if choice == "u":
         reader = UserInput()
     elif choice == "f":
