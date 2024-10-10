@@ -74,8 +74,8 @@
 # As I input the string characters into the stack, I can count each one and increment the values in the hashmap
 
 def Main():
-    # Creates a copy of the ASCII hash map
     choice = input("Read from user input (u) or from a file (f)?: ")
+    # Initialized reader here to address error where invalid options would cause it to not initialize on second attempt
     reader = ""
     if choice == "u":
         reader = UserInput()
@@ -85,6 +85,7 @@ def Main():
         print("ERROR: Pick a valid option!")
         Main()
 
+    # Creates a copy of the ASCII hash map
     map = Map()
     
     
